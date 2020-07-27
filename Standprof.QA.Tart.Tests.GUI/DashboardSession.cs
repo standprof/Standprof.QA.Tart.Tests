@@ -34,7 +34,7 @@ namespace Standprof.QA.Tart.Tests.GUI
             // Launch a new instance of Notepad application
             if (session == null)
             {
-                // Create a new session to launch Notepad application
+                // Create a new session to launch Dashboard application
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("app", DashboardAppId);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
@@ -46,7 +46,6 @@ namespace Standprof.QA.Tart.Tests.GUI
 
                 // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
                 session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
-
 
                 var searchButton = session.FindElementByName("Search");
                 Assert.IsNotNull(searchButton);
@@ -71,18 +70,6 @@ namespace Standprof.QA.Tart.Tests.GUI
                 session = null;
             }
         }
-
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            // Select all text and delete to clear the edit box
-            //editBox.SendKeys(Keys.Control + "a" + Keys.Control);
-            //editBox.SendKeys(Keys.Delete);
-            //Assert.AreEqual(string.Empty, editBox.Text);
-        }
-
-
-
 
         protected static string SanitizeBackslashes(string input) => input.Replace("\\", Keys.Alt + Keys.NumberPad9 + Keys.NumberPad2 + Keys.Alt);
     }

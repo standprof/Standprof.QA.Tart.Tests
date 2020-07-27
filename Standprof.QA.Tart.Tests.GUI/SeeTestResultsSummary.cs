@@ -4,11 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 
-//using OpenQA.Selenium.Remote;
-
-//using OpenQA.Selenium.Appium.Windows;
-//using OpenQA.Selenium.Remote;
-
 namespace Standprof.QA.Tart.Tests.GUI
 {
     [TestClass]

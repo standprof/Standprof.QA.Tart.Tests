@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 
@@ -15,7 +14,7 @@ namespace Standprof.QA.Tart.Tests.GUI
 
         public static void Setup(TestContext context)
         {
-            // Launch a new instance of Notepad application
+            // Launch a new instance of Dashboard application
             if (session == null)
             {
                 // Create a new session to launch Dashboard application
@@ -25,7 +24,7 @@ namespace Standprof.QA.Tart.Tests.GUI
                 Assert.IsNotNull(session);
                 Assert.IsNotNull(session.SessionId);
 
-                // Verify that Notepad is started with untitled new file
+                // Verify that app is started
                 Assert.AreEqual("Standprof - Automated Test Results Dashboard", session.Title);
 
                 // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
@@ -45,7 +44,7 @@ namespace Standprof.QA.Tart.Tests.GUI
 
                 try
                 {
-                    // Dismiss Save dialog if it is blocking the exit
+                    // Dismiss "There are no results" dialog if it is blocking the exit
                     session.FindElementByName("OK").Click();
                 }
                 catch { }
@@ -54,7 +53,5 @@ namespace Standprof.QA.Tart.Tests.GUI
                 session = null;
             }
         }
-
-        protected static string SanitizeBackslashes(string input) => input.Replace("\\", Keys.Alt + Keys.NumberPad9 + Keys.NumberPad2 + Keys.Alt);
     }
 }
